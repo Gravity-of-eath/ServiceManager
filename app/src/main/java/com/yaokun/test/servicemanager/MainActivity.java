@@ -98,7 +98,7 @@ public class MainActivity extends AbsActivity implements TablesView.OnClickTab {
     }
 
     private void getData() {
-        String url = "http://182.61.171.16:8099/health?token=eyJzdWIiOiIxNTMyMDU2Njk0OTgyNjc5QDE1MzIwNTY2OTQ5ODI2NzlAMUAxNTM4MjkwNjcwMDg3In0";
+        String url = "http://182.61.171.16:8099/health?token=eyJzdWIiOiIxNTMyMDU2Njk0OTgyNjc5QDE1MzIwNTY2OTQ5ODI2NzlAMUAxNTM4MjkwNjcwMDg3In";
         url = GlobalStorage.getValue("url", url);
         OkHttpUtils.getAsyncRequest(MainActivity.this, url, this);
     }

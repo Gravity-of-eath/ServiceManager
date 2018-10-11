@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ServiceManager</string>
+    <string name="title_activity_abs">AbsActivity</string>
+</resources>

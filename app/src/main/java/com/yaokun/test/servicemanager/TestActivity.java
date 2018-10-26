@@ -11,7 +11,9 @@ import android.widget.Toast;
 import com.yaokun.test.servicemanager.interfaces.AbsDataModel;
 import com.yaokun.test.servicemanager.view.TablesView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TestActivity extends AppCompatActivity implements TablesView.OnClickTab {
@@ -29,13 +31,12 @@ public class TestActivity extends AppCompatActivity implements TablesView.OnClic
         hear.add("Titel");
         hear.add("Name");
         hear.add("Ages");
-        hear.add("Address_local");
+        hear.add("Address_location");
         hear.add("Phone");
         hear.add("E-mail");
         hear.add("    ");
         hear.add("    ");
         hear.add("XXXX");
-
         tabss.setTabHeads(hear);
         ArrayList<AbsDataModel> absDataModels = new ArrayList<>();
         for (int i = 0; i < 1225; i++) {

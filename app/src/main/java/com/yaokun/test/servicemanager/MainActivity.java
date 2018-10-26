@@ -19,6 +19,7 @@ import com.yaokun.test.servicemanager.interfaces.AbsDataModel;
 import com.yaokun.test.servicemanager.model.HealthModel;
 import com.yaokun.test.servicemanager.utils.DialogsUtils;
 import com.yaokun.test.servicemanager.utils.GlobalStorage;
+import com.yaokun.test.servicemanager.utils.NetworkDeviceUtils;
 import com.yaokun.test.servicemanager.utils.OkHttpUtils;
 import com.yaokun.test.servicemanager.view.TablesView;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AbsActivity implements TablesView.OnClickTab {
     }
 
     private void getData() {
-        String url = "http://182.61.171.16:8099/health?token=eyJzdWIiOiIxNTMyMDU2Njk0OTgyNjc5QDE1MzIwNTY2OTQ5ODI2NzlAMUAxNTM4MjkwNjcwMDg3In";
+        String url = "http://182.61.171.16:8099/health?token=eyJzdWIiOiIxNTMyMDU2Njk0OTgyNjc5QDE1MzIwNTY2OTQ5ODI2NzlAMUAxNTM4MjkwNjcwMDg3In0";
         url = GlobalStorage.getValue("url", url);
         OkHttpUtils.getAsyncRequest(MainActivity.this, url, this);
     }
@@ -141,6 +142,7 @@ public class MainActivity extends AbsActivity implements TablesView.OnClickTab {
 
     @Override
     public void clickTitel(View view) {
+//        NetworkDeviceUtils.getClientIP();
         getData();
     }
 

@@ -117,6 +117,7 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
     }
 
 
+    //根据数据长度设置索引列宽度
     private void initIndexWidth(int maxCount) {
         if (maxCount > 0 && maxCount < 999) {
             indexWidthPx = getPxvalue(35);
@@ -200,9 +201,13 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
             return;
         }
         canvas.drawColor(backGroungColor);
-        drawSheet(canvas, paint);
-        drawTabHead(canvas, paint);
-        drawIndex(canvas, paint);
+        if (null != datas && !datas.isEmpty()) {
+            drawSheet(canvas, paint);
+            drawIndex(canvas, paint);
+            drawTabHead(canvas, paint);
+        } else {
+            canvas.drawText("NO DATA",50,50,paint);
+        }
         holder.unlockCanvasAndPost(canvas);
     }
 
@@ -214,7 +219,7 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
         paint.setColor(Color.WHITE);
         for (int i = 1; i <= datas.size(); i++) {
             int pxvalue = getPxvalue(minRankHeight);
-            if (headHeightPx + dY + i * pxvalue < pxvalue * 2 || headHeightPx + dY + i * pxvalue > Height + pxvalue) {
+            if (headHeightPx + dY + i * pxvalue < pxvalue || headHeightPx + dY + i * pxvalue > Height + pxvalue) {
                 continue;
             }
             String s = String.valueOf(i);
@@ -375,6 +380,9 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
 
     @Override
     public boolean onSingleTapUp(MotionEvent motionEvent) {
+        if(null==datas||datas.isEmpty()){
+            return true;
+        }
         touchMode = 0;
         findCellByXY(motionEvent.getX(), motionEvent.getY());
         return true;
@@ -403,6 +411,9 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float scrollX, float scrollY) {
+        if(null==datas||datas.isEmpty()){
+            return true;
+        }
         if (touchMode == 0) {//在表格上滑动
             dX -= scrollX;
             if (dX < Width - sheetWidth - indexWidthPx) {//限制右边滑动出界
@@ -433,7 +444,6 @@ public class TablesView extends SurfaceView implements SurfaceHolder.Callback, G
         } else {
 
         }
-
         drawView(holder);
         return true;
     }
